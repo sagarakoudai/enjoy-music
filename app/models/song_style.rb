@@ -1,0 +1,2 @@
+class SongStyle < ApplicationRecord
+end
