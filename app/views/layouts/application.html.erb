@@ -16,13 +16,13 @@
 
         <% if user_signed_in? %>
           <li>
-            <%= link_to "New Song", destroy_user_session_path, method: :delete %>
+            <%= link_to "New Song", new_song_path %>
           </li>
           <li>
-            <%= link_to "My Page", destroy_user_session_path, method: :delete %>
+            <%= link_to "My Page", user_path(current_user), method: :get %>
           </li>
           <li>
-            <%= link_to "Songs", destroy_user_session_path, method: :delete %>
+            <%= link_to "Songs", songs_path, method: :get %>
           </li>
           <li>
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
@@ -35,10 +35,10 @@
             <%= link_to "Sign in", new_user_session_path %>
           </li>
           <li>
-            <%= link_to "Songs", destroy_user_session_path, method: :delete %>
+            <%= link_to "Songs", songs_path, method: :get %>
           </li>
           <li>
-            <%= link_to "About", destroy_user_session_path, method: :delete %>
+            <%= link_to "About", home_about_path %>
           </li>
         <% end %>
 

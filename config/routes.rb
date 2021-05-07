@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'homes#top'
+  get 'home/about' => 'homes#about'
+
+  resources :users, only: [:show, :edit, :update]
+  resources :songs do
+    resource :comments, only: [:create, :destroy]
+    resource :favorites,only: [:create, :destroy]
+  end
+
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  get 'follow/:id/index' => 'relationships#follow_index', as: 'follow_index'
+  get 'follower/:id/index' => 'relationships#follower_index', as: 'follower_index'
+
 end
