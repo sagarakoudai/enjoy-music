@@ -1,2 +1,11 @@
-<h1>Homes#about</h1>
-<p>Find me in app/views/homes/about.html.erb</p>
+<h1>welcome to enjoy music!</h1>
+
+<%= image_tag 'jose-pinto-rVl0AwcRYsE-unsplash.jpg', size: '800x500' %>
+
+<p>enjoy music!へようこそ！</p>
+<p>enjoy music!では自分の作った楽曲を他の人に聴いてもらいコメントをもらったり、
+他の人が作った曲を聴いて刺激を受けたり、あなたの作曲ライフをより豊かにするための
+場所です。あなたの作った曲をぜひ聴かせてください。</p>
+
+<%= link_to "新規登録", new_user_registration_path %>
+<%= link_to "ログイン", new_user_session_path %>
