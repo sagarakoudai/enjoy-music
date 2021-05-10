@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_184658) do
+ActiveRecord::Schema.define(version: 2021_05_10_052730) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_184658) do
     t.integer "song_style_id", null: false
     t.integer "user_id", null: false
     t.string "file", null: false
-    t.string "tittle", null: false
+    t.string "title", null: false
     t.text "detail"
     t.string "image_id"
     t.datetime "created_at", null: false
