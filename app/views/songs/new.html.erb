@@ -1,8 +1,7 @@
 <h1>Songs#new</h1>
-<%= form_with model: @song, url: songs_path, method: :post, local: true do |f| %>
+<%= form_with model: @song, local: true do |f| %>
 <%= f.label "楽曲ファイル" %><i class="far fa-file-audio"></i><%= f.file_field :file %><br/>
 <%= f.label "タイトル" %><span><%= f.text_field :title %></span>
-<%= f.label "楽曲形式" %><%= f.collection_select :select_song_style, @song_styles, :id, :select_song_style  %>
-<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.label "楽曲形式" %><%= f.collection_select :song_style_id, @song_styles, :id, :select_song_style  %>
 <%= f.submit "アップロード", class: 'btn btn-outline-info', data: {confirm: "Aboutページの注意事項を確認しましたか？"}%><br />
 <% end %>
