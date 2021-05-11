@@ -1,6 +1,6 @@
 <h1>Songs#show</h1>
 
-<%= attachment_image_tag @song, :image, format: 'jpeg' %><br>
+<%= attachment_image_tag(@song, :image, format: 'jpeg') %><br>
 <audio src="<%= url_for(@song.file.url) %>", controls></audio><br>
 <%= @song.title %><br>
 <%= @song.song_style.style %><br>

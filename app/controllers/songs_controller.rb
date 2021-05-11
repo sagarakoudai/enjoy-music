@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+
   def index
     @songs = Song.all
   end
@@ -37,7 +38,9 @@ class SongsController < ApplicationController
     redirect_to songs_path
   end
 
-  private
+
+
+ private
   def select_song_style
     params.require(:song_style).permit(:select_song_style)
   end
@@ -45,6 +48,5 @@ class SongsController < ApplicationController
   def song_params
     params.require(:song).permit(:title, :file, :user_id, :song_style_id, :image, :detail)
   end
-
 
 end
