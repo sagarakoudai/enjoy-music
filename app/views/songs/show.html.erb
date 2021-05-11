@@ -1,2 +1,12 @@
 <h1>Songs#show</h1>
-<p>Find me in app/views/songs/show.html.erb</p>
+
+<%= attachment_image_tag @song, :image, format: 'jpeg' %><br>
+<audio src="<%= url_for(@song.file.url) %>", controls></audio><br>
+<%= @song.title %><br>
+<%= @song.song_style.style %><br>
+<%= @song.detail %><br>
+
+<% if @song.user_id == current_user.id %>
+  <%= link_to "編集", edit_song_path(@song) %>
+  <%= link_to "削除", song_path(@song), method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
+<% end %>
