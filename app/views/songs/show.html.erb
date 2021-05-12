@@ -6,7 +6,30 @@
 <%= @song.song_style.style %><br>
 <%= @song.detail %><br>
 
+<% if @song.favorited_by?(current_user) %>
+  <p><%= link_to "♥", song_favorite_path(@song), method: :delete %></p>
+<% else %>
+  <p><%= link_to "♡", song_favorites_path(@song), method: :post %></p>
+<% end %>
+
+
 <% if @song.user_id == current_user.id %>
   <%= link_to "編集", edit_song_path(@song) %>
   <%= link_to "削除", song_path(@song), method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
+<% end %>
+
+
+<%= form_with model: [@song, @comment], local: true do |f| %>
+  <%= f.text_area :body %>
+  <%= f.submit "コメントする" %>
+<% end %>
+
+<P>コメント</P>
+<% @song.comments.each do |comment| %>
+  <%= attachment_image_tag(comment.user, :image, format: 'jpeg') %><br>
+  <%= comment.user.name %>
+  <%= comment.body %>
+  <% if comment.user == current_user %>
+    <%= link_to "削除", song_comment_path(comment.song, comment), method: :delete %>
+  <% end %>
 <% end %>
