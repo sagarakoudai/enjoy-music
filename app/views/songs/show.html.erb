@@ -1,5 +1,18 @@
 <h1>Songs#show</h1>
 
+<!--投稿ユーザー情報-->
+<%= link_to user_path(@song.user) do %>
+  <%= attachment_image_tag(@song.user, :image, format: 'jpeg') %>
+<% end %>
+<%= link_to @song.user.name, user_path(@song.user) %>
+<% if current_user.following?(@song.user) %>
+  <%= link_to "フォロー外す", unfollow_path(@song.user.id), method: :post %>
+<% else %>
+  <%= link_to "フォローする", follow_path(@song.user.id), method: :post %>
+<% end %>
+<br>
+
+<!--楽曲情報-->
 <%= attachment_image_tag(@song, :image, format: 'jpeg') %><br>
 <audio src="<%= url_for(@song.file.url) %>", controls></audio><br>
 <%= @song.title %><br>
@@ -12,13 +25,13 @@
   <p><%= link_to "♡", song_favorites_path(@song), method: :post %></p>
 <% end %>
 
-
+<!--編集-->
 <% if @song.user_id == current_user.id %>
   <%= link_to "編集", edit_song_path(@song) %>
   <%= link_to "削除", song_path(@song), method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
 <% end %>
 
-
+<!--コメントフォーム-->
 <%= form_with model: [@song, @comment], local: true do |f| %>
   <%= f.text_area :body %>
   <%= f.submit "コメントする" %>
@@ -26,8 +39,10 @@
 
 <P>コメント</P>
 <% @song.comments.each do |comment| %>
-  <%= attachment_image_tag(comment.user, :image, format: 'jpeg') %><br>
-  <%= comment.user.name %>
+  <%= link_to user_path(comment.user_id) do %>
+    <%= attachment_image_tag(comment.user, :image, format: 'jpeg') %><br>
+    <%= comment.user.name %>
+  <% end %>
   <%= comment.body %>
   <% if comment.user == current_user %>
     <%= link_to "削除", song_comment_path(comment.song, comment), method: :delete %>

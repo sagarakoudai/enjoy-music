@@ -4,9 +4,21 @@
 <%= @user.name %><br>
 <%= @user.introduction %><br>
 
+
 <% if @user.id == current_user.id %>
   <%= link_to "プロフィールを編集する", edit_user_path(@user) %>
+<% else %>
+  <% if current_user.following?(@user) %>
+    <%= link_to "フォロー外す", unfollow_path(@user.id), method: :post %>
+  <% else %>
+    <%= link_to "フォローする", follow_path(@user.id), method: :post %>
+  <% end %>
 <% end %>
+<br>
+
+<%= link_to "お気に入りの曲", favorites_path(@user) %>
+<%= link_to "フォロー#{@user.follower.count}人", follow_index_path(@user.id) %>
+<%= link_to "フォロワー#{@user.followed.count}人", follower_index_path(@user.id) %>
 
 
 <% @songs.each do |song| %>

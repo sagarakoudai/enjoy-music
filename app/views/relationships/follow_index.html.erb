@@ -1,2 +1,13 @@
 <h1>Relationships#follow_index</h1>
-<p>Find me in app/views/relationships/follow_index.html.erb</p>
+
+<% @user.following_user.each do |user| %>
+  <%= attachment_image_tag(user, :image, format: 'jpeg') %>
+  <%= user.name %>
+  <% if current_user.id != user.id %>
+    <% if current_user.following?(user) %>
+      <%= link_to "フォロー外す", unfollow_path(user.id), method: :post %>
+    <% else %>
+      <%= link_to "フォローする", follow_path(user.id), method: :post %>
+    <% end %>
+  <% end %>
+<% end %>
