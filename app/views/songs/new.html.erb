@@ -11,7 +11,7 @@
 <%= f.text_field :title %><br>
 
 <%= f.label "楽曲形式" %>
-<%= f.collection_select :song_style_id, @song_styles, :id, :select_song_style  %><br>
+<%= f.collection_select :song_style_id, SongStyle.all, :id, :select_song_style  %><br>
 
 <%= f.label "楽曲詳細(任意）" %><br>
 <%= f.text_area :detail %><br>

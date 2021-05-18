@@ -1,5 +1,16 @@
 <h1>Songs#index</h1>
 
+<P>曲を探す</P>
+<%= form_with url: songs_path, method: :get, local: true do |f| %>
+ <%= f.text_field :search %>
+<%= f.submit "Search" ,:title => nil ,class: "button is-info"%>
+<% end %>
+
+<p>楽曲形式で探す</p>
+<% @song_styles.each do |song_style| %>
+<%= link_to song_style.style, songs_path(sort: song_style.id) %>
+<% end %>
+
 <% @songs.each do |song| %>
 
  <%= link_to song_path(song) do %>
@@ -9,5 +20,6 @@
  <audio src="<%= url_for(song.file.url) %>", controls></audio><br>
 
  <%= song.title %><br>
+ <%= song.song_style.style %><br>
 
 <% end %>

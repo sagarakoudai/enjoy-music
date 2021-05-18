@@ -1,7 +1,11 @@
 class SongsController < ApplicationController
 
   def index
-    @songs = Song.all
+    @songs = Song.search(params[:search])
+    @song_styles = SongStyle.all
+    if params[:sort]
+      @songs = Song.where(song_style_id: params[:sort])
+    end
   end
 
   def show
@@ -11,7 +15,6 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
-    @song_styles = SongStyle.all
   end
 
   def edit
@@ -38,7 +41,6 @@ class SongsController < ApplicationController
     @song.destroy
     redirect_to songs_path
   end
-
 
 
  private

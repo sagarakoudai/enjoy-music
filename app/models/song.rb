@@ -14,4 +14,12 @@ class Song < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  def self.search(search)
+    if search
+      @song = Song.where(['title LIKE(?) or detail LIKE(?) or song_style_id LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+    else
+      Song.all
+    end
+  end
+
 end
