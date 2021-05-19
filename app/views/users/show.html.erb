@@ -1,6 +1,6 @@
 <h1>Users#show</h1>
 
-<%= attachment_image_tag(@user, :image, format: 'jpeg') %><br>
+<%= attachment_image_tag @user, :image, :fill,300,300, format: 'jpeg' %><br>
 <%= @user.name %><br>
 <%= @user.introduction %><br>
 
@@ -18,12 +18,12 @@
 
 <%= link_to "お気に入りの曲", favorites_path(@user) %>
 <%= link_to "フォロー#{@user.follower.count}人", follow_index_path(@user.id) %>
-<%= link_to "フォロワー#{@user.followed.count}人", follower_index_path(@user.id) %>
+<%= link_to "フォロワー#{@user.followed.count}人", follower_index_path(@user.id) %><br>
 
 
 <% @songs.each do |song| %>
  <%= link_to song_path(song) do %>
-   <%= attachment_image_tag song, :image, format: 'jpeg' %><br>
+   <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg' %><br>
  <% end %>
 
  <audio src="<%= url_for(song.file.url) %>", controls></audio><br>

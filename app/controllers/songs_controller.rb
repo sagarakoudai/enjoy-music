@@ -25,13 +25,18 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     @song.user_id = current_user.id
-    if @song.save!
-      redirect_to songs_path
+    if @song.image_id == nil
+      @song.image_id == current_user.image_id
     end
+    @song.save
+    redirect_to songs_path
   end
 
   def update
     @song = Song.find(params[:id])
+    if @song.image_id == nil
+      @song.image_id = current_user.image_id
+    end
     @song.update(song_params)
     redirect_to songs_path
   end

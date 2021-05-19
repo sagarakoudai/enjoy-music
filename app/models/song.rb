@@ -16,7 +16,7 @@ class Song < ApplicationRecord
 
   def self.search(search)
     if search
-      @song = Song.where(['title LIKE(?) or detail LIKE(?) or song_style_id LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+      @song = Song.where(['title LIKE(?) or detail LIKE(?)', "%#{search}%", "%#{search}%"])
     else
       Song.all
     end
