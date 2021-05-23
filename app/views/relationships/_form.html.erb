@@ -1,0 +1,9 @@
+<span id="follow_<%= user.id %>">
+  <% if user_signed_in? && user != current_user %>
+    <% if current_user.following?(user) %>
+     <%= link_to "フォロー中", unfollow_path(user.id), method: :post, remote: true %>
+    <% else %>
+      <%= link_to "フォローする", follow_path(user.id), method: :post, remote: true %>
+    <% end %>
+  <% end %>
+</span>

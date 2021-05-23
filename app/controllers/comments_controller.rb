@@ -5,13 +5,12 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.song_id = @song.id
     @comment.save
-    redirect_to song_path(@song)
   end
 
   def destroy
-    @comment = Comment.find_by(id: params[:id], song_id: params[:song_id])
+    @comment = Comment.find(params[:id])
+    @song = @comment.song
     @comment.destroy
-    redirect_to song_path(params[:song_id])
   end
 
 

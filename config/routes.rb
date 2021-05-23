@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :songs do
     resources :comments, only: [:create, :destroy]
-    resources :favorites,only: [:create, :destroy]
+    resource :favorites,only: [:create, :destroy]
   end
 
   get 'favorites/:user_id' => 'favorites#index', as: "favorites"

@@ -4,51 +4,43 @@
     <title>EnjoyMusic</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <div>
-        <%= link_to "enjoy music!", root_path %>
+  <body class="bg-light">
+    <div class="container bg-white p-5">
+      <header class="mb-5">
 
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to "New Song", new_song_path %>
-          </li>
-          <li>
-            <%= link_to "My Page", user_path(current_user), method: :get %>
-          </li>
-          <li>
-            <%= link_to "Songs", songs_path, method: :get %>
-          </li>
-          <li>
-            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Sign Up", new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "Sign in", new_user_session_path %>
-          </li>
-          <li>
-            <%= link_to "Songs", songs_path, method: :get %>
-          </li>
-          <li>
-            <%= link_to "About", home_about_path %>
-          </li>
-        <% end %>
+        <div class="row navbar border-bottom mb-4">
+          <div class="col-4">
+            <h1><%= link_to "ENJOY MUSIC!", root_path %></h1>
+          </div>
 
-      </div>
-    </header>
+          <div class="col-7">
+            <% if user_signed_in? %>
+              <ul class="nav pull-right">
+                <li class="ml-5"><%= link_to "New Song", new_song_path %></li>
+                <li class="ml-5"><%= link_to "My Page", user_path(current_user), method: :get %></li>
+                <li class="ml-5"><%= link_to "Songs", songs_path, method: :get %></li>
+                <li class="ml-5"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            <% else %>
+              <ul class="nav pull-right">
+                <li class="ml-4"><%= link_to "Sign Up", new_user_registration_path %></li>
+                <li class="ml-4"><%= link_to "Sign in", new_user_session_path %></li>
+                <li class="ml-4"><%= link_to "Songs", songs_path, method: :get %></li>
+                <li class="ml-4"><%= link_to "About", home_about_path %></li>
+              </ul>
+            <% end %>
+          </div>
+        </div>
 
-    <%= yield %>
+        <%= render 'songs/search', song_styles: SongStyle.all %>
+      </header>
 
-    <footer>
-      <p><%= link_to "contact" %></p>
-    </footer>
+      <%= yield %>
+
+    </div>
   </body>
 </html>

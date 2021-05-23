@@ -1,0 +1,16 @@
+<div class="row pb-3">
+  <div class="col-4">
+    <%= form_with url: songs_path, method: :get, local: true do |f| %>
+      <%= f.text_field :search %>
+      <%= f.submit "Search" ,:title => nil ,class: "button is-info"%>
+    <% end %>
+  </div>
+
+  <div class="col-8 navbar">
+    <% song_styles.each do |song_style| %>
+      <ul class="nav pull-right">
+        <li class="mr-5"><%= link_to song_style.style, songs_path(sort: song_style.id) %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

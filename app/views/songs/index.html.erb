@@ -1,25 +1,17 @@
-<h1>Songs#index</h1>
+<h1>Songs</h1>
 
-<P>曲を探す</P>
-<%= form_with url: songs_path, method: :get, local: true do |f| %>
- <%= f.text_field :search %>
-<%= f.submit "Search" ,:title => nil ,class: "button is-info"%>
-<% end %>
+<div class="row pt-3">
+  <% @songs.each do |song| %>
 
-<p>楽曲形式で探す</p>
-<% @song_styles.each do |song_style| %>
-<%= link_to song_style.style, songs_path(sort: song_style.id) %>
-<% end %><br>
-
-<% @songs.each do |song| %>
-
- <%= link_to song_path(song) do %>
-   <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg' %><br>
- <% end %>
-
- <audio src="<%= url_for(song.file.url) %>", controls></audio><br>
-
- <%= song.title %><br>
- <%= song.song_style.style %><br>
-
-<% end %>
+    <div class="col-4 mb-5">
+      <%= link_to song_path(song) do %>
+        <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg', class: "border" %><br>
+      <% end %>
+      <audio src="<%= url_for(song.file.url) %>", controls></audio><br>
+      <%= render 'favorites/form', song: song %>
+      <span class="lead mr-3"><%= song.title %></span>
+      <span class="small"><%= song.song_style.style %></span><br>
+      <%= song.user.name %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<span id="song_<%= song.id %>">
+<% if user_signed_in? %>
+  <% if song.favorited_by?(current_user) %>
+    <p><%= link_to "お気に入り ♥", song_favorites_path(song), method: :delete, remote: true %></p>
+  <% else %>
+    <p><%= link_to "お気に入り ♡", song_favorites_path(song), method: :post, remote: true %></p>
+  <% end %>
+<% end %>
+</span>
