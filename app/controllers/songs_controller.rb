@@ -1,10 +1,13 @@
 class SongsController < ApplicationController
 
   def index
-    @songs = Song.search(params[:search])
+    @songs = Song.search(params[:search]).order(id: "DESC")
     @song_styles = SongStyle.all
-    if params[:sort]
-      @songs = Song.where(song_style_id: params[:sort])
+    if params[:sort_style]
+      @songs = Song.where(song_style_id: params[:sort_style])
+    elsif params[:sort_popular]
+      @songs_popular = @songs.sort {|a,b| b.favorites.count <=> a.favorites.count}
+      @songs = @songs_popular
     end
   end
 
@@ -26,7 +29,7 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
     @song.user_id = current_user.id
     if @song.image_id == nil
-      @song.image_id == current_user.image_id
+      @song.image_id = current_user.image_id
     end
     @song.save
     redirect_to songs_path

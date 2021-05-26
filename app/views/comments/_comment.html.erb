@@ -12,7 +12,9 @@
           <%= link_to "削除", song_comment_path(comment.song, comment), method: :delete, remote: true %>
         <% end %>
       </td></tr>
-      <tr><td><%= comment.body %></td></tr>
+      <tr><td>
+        <p class="word-break-break-all"><%= comment.body %></p>
+        </td></tr>
     </table>
 
   </div>

@@ -1,0 +1,21 @@
+<script type="text/javascript">
+$(function () {
+	var audio = $("#audio_<%= song.id %>").get(0);
+	var isPlaying = false;
+	$("#btn_<%= song.id %>").on("click", function () {
+		if (isPlaying) {
+			audio.pause();
+			$("#btn_<%= song.id %>").removeClass("btn_stop");
+		} else {
+			audio.play();
+			$("#btn_<%= song.id %>").addClass("btn_stop");
+		}
+	});
+	audio.onplaying = function() {
+		isPlaying = true;
+	};
+	audio.onpause = function() {
+		isPlaying = false;
+	};
+});
+</script>

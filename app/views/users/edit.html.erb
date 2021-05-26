@@ -1,16 +1,26 @@
-<h1>Users#edit</h1>
+<div class="ml-5">
+  <h1 class="mb-4">プロフィール編集</h1>
 
-<%= form_with model: @user, local: true do |f| %>
+  <%= form_with model: @user, local: true do |f| %>
 
-  <%= f.label "名前" %>
-  <%= f.text_field :name %><br>
+    <div class="mb-4 ml-4">
+      <%= f.label "・名前" %>
+      <%= f.text_field :name %><br>
+    </div>
 
-  <%= f.label "自己紹介" %>
-  <%= f.text_area :introduction %><br>
+    <div class="mb-4 ml-4">
+      <%= f.label "・自己紹介" %>
+      <%= f.text_area :introduction, size: "60x4" %><br>
+    </div>
 
-  <%= f.label "画像" %>
-  <%= f.attachment_field :image %><br>
+    <div class="mb-5 ml-4">
+      <%= f.label "・プロフィール画像" %>
+      <%= f.attachment_field :image %><br>
+    </div>
 
-  <%= f.submit "編集", class: 'btn btn-outline-info' %><br />
+    <div class="mb-5 ml-4">
+      <%= f.submit "プロフィール変更", class: 'btn btn-outline-info' %><br>
+    </div>
 
-<% end %>
+  <% end %>
+</div>

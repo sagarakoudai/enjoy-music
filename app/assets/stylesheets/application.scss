@@ -24,3 +24,86 @@ a:link, a:visited, a:active {
 a:hover {
   color: blue
 }
+
+body {
+  // background: linear-gradient(to bottom right, #b968c5, skyblue);
+}
+
+.word-break-break-all {
+  word-break: break-all;
+}
+
+  .menu li, .menu_style li {
+    margin-left: 60px;
+  }
+
+.play_bar {
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.box {
+    position: relative;
+}
+
+.btn_play {
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  transform: translateY(-50%) translateX(-50%);
+  margin: auto;
+  background-image: url("playbutton.png");
+  background-size: 100% 100%;
+  height: 50%;
+  width: 50%;
+  opacity: 0.5;
+}
+
+.btn_stop {
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  transform: translateY(-50%) translateX(-50%);
+  margin: auto;
+  background-image: url("stopbutton.jpeg");
+  background-size: 100% 100%;
+  height: 40%;
+  width: 40%;
+  opacity: 0.5;
+}
+
+.playbutton {
+  height: 100%;
+  width: 100%;
+  opacity: 0.6;
+}
+
+.favorite {
+  color: rgb(240,55,70);
+}
+
+
+@media screen and (max-width:992px) {
+  .img_show {
+    width: 100%;
+    height: 100%;
+  }
+
+  .img_index {
+    width: 100%;
+    height: 60%;
+  }
+
+  audio {
+    width: 100%;
+    height: 50px;
+  }
+
+  .menu li {
+    margin-left: 20px;
+  }
+
+  .menu_style li {
+    margin-left: 15px;
+  }
+}

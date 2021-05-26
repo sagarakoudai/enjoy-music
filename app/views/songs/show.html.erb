@@ -1,11 +1,10 @@
 <div class="col-10 mx-auto">
 
   <h1><%= @song.title %></h1>
-  <%= attachment_image_tag @song, :image, :fill,800,500, format: 'jpeg', class: "border" %><br>
-  <audio src="<%= url_for(@song.file.url) %>", controls></audio>
-  <%= render 'favorites/form', song: @song %><br>
+  <%= attachment_image_tag @song, :image, :fill,800,500, format: 'jpeg', class: "border img_show" %><br>
+  <audio src="<%= url_for(@song.file.url) %>", class="play_bar", controls></audio>
 
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-5">
       <%= link_to user_path(@song.user) do %>
         <%= attachment_image_tag @song.user, :image, :fill,100,100, format: 'jpeg', class: "border rounded-circle" %><br>
@@ -13,25 +12,26 @@
       <%= link_to @song.user.name, user_path(@song.user) %><br>
 
       <%= render 'relationships/form', user: @song.user %>
+
+      <% if @song.user == current_user %>
+        <%= link_to "編集", edit_song_path(@song), class: "text-primary" %>
+        <%= link_to "削除", song_path(@song), method: :delete, class: "text-primary", data: {confirm: "本当に削除してよろしいですか？"} %>
+      <% end %>
     </div>
 
     <div class="col-5">
       <%= @song.song_style.style %><br>
-      <%= @song.detail %><br>
+      <p class="word-break-break-all"><%= @song.detail %></p>
+      <span class="lead"><%= render 'favorites/form', song: @song %></span>
     </div>
   </div>
 
-  <% if @song.user == current_user %>
-    <%= link_to "編集", edit_song_path(@song) %>
-    <%= link_to "削除", song_path(@song), method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
-  <% end %>
-
   <%= form_with model: [@song, @comment], remote: true do |f| %>
-    <%= f.text_area :body, size: "60x4" %>
+    <%= f.text_area :body, size: "40x4" %>
     <%= f.submit "コメントする" %>
   <% end %>
 
-  <P>コメント</P>
+  <h4 class="mt-5 mb-3">コメント</h4>
   <span class="comment_<%= @song.id %>">
     <%= render 'comments/comment', song: @song %>
   </span>
