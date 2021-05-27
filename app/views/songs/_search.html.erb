@@ -6,7 +6,7 @@
     <% end %>
   </div>
 
-  <div class="navbar style">
+  <div class="navbar style ml-3">
     <% song_styles.each do |song_style| %>
       <ul class="nav pull-right menu_style">
         <li><%= link_to song_style.style, songs_path(sort_style: song_style.id) %></li>

@@ -1,13 +1,13 @@
-<h1>Relationships#follower_index</h1>
+<h1 class="mb-5">フォロワー <%= @user.follower_user.count %>人</h1>
 
+<div class="row">sss
 <% @user.follower_user.each do |user| %>
-  <%= attachment_image_tag(user, :image, format: 'jpeg') %>
-  <%= user.name %>
-  <% if current_user.id != user.id %>
-    <% if current_user.following?(user) %>
-      <%= link_to "フォロー外す", unfollow_path(user.id), method: :post %>
-    <% else %>
-      <%= link_to "フォローする", follow_path(user.id), method: :post %>
+  <div class="col-4">
+    <%= link_to user_path(user) do %>
+      <%= attachment_image_tag user, :image, :fill,200,200, format: 'jpeg', fallback: "no_image.jpg", class: "border rounded-circle" %>
     <% end %>
-  <% end %>
+    <p><%= user.name %></p>
+    <%= render 'relationships/form', user: user %>
+  </div>
 <% end %>
+</div>

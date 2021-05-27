@@ -4,17 +4,17 @@
   <%= form_with model: @user, local: true do |f| %>
 
     <div class="mb-4 ml-4">
-      <%= f.label "・名前" %>
+      <%= f.label "・名前" %><br>
       <%= f.text_field :name %><br>
     </div>
 
     <div class="mb-4 ml-4">
-      <%= f.label "・自己紹介" %>
+      <%= f.label "・自己紹介" %><br>
       <%= f.text_area :introduction, size: "60x4" %><br>
     </div>
 
     <div class="mb-5 ml-4">
-      <%= f.label "・プロフィール画像" %>
+      <%= f.label "・プロフィール画像" %><br>
       <%= f.attachment_field :image %><br>
     </div>
 

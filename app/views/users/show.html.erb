@@ -1,6 +1,10 @@
 <h1><%= @user.name %></h1>
 <div class="row mb-5">
-  <%= attachment_image_tag @user, :image, :fill,300,300, format: 'jpeg', class: "border rounded-circle" %>
+  <% if @user.image_id == nil %>
+    <%= image_tag 'no_image.jpg', size: '300x300', class: "border rounded-circle" %>
+  <% else %>
+    <%= attachment_image_tag @user, :image, :fill,300,300, format: 'jpeg', class: "border rounded-circle" %>
+  <% end %>
 
   <table class="table col-8">
     <tr><td class="lead">
@@ -30,7 +34,7 @@
     <div class="col-4 mb-5 mt-3">
       <div class="box">
         <%= link_to song_path(song) do %>
-          <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg', class: "border img_index" %>
+          <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg', fallback: "no_image.jpg", class: "border img_index no_img" %>
         <% end %>
         <div class="btn_play" id="btn_<%= song.id %>"></div>
       </div>

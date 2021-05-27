@@ -1,7 +1,8 @@
 class SongsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @songs = Song.search(params[:search]).order(id: "DESC")
+    @songs = Song.search(params[:search]).order(updated_at: "DESC")
     @song_styles = SongStyle.all
     if params[:sort_style]
       @songs = Song.where(song_style_id: params[:sort_style])
@@ -21,7 +22,6 @@ class SongsController < ApplicationController
   end
 
   def edit
-    @song = Song.find(params[:id])
     @song_styles = SongStyle.all
   end
 
@@ -29,14 +29,13 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
     @song.user_id = current_user.id
     if @song.image_id == nil
-      @song.image_id = current_user.image_id
+       @song.image_id = current_user.image_id
     end
     @song.save
     redirect_to songs_path
   end
 
   def update
-    @song = Song.find(params[:id])
     if @song.image_id == nil
       @song.image_id = current_user.image_id
     end
@@ -45,7 +44,6 @@ class SongsController < ApplicationController
   end
 
   def destroy
-    @song = Song.find(params[:id])
     @song.destroy
     redirect_to songs_path
   end
@@ -58,6 +56,18 @@ class SongsController < ApplicationController
 
   def song_params
     params.require(:song).permit(:title, :file, :user_id, :song_style_id, :image, :detail)
+  end
+
+  def correct_user
+    if user_signed_in?
+      @song = Song.find(params[:id])
+      @user = @song.user
+      unless @user == current_user
+        redirect_to root_path
+      end
+    else
+       redirect_to root_path
+    end
   end
 
 end
