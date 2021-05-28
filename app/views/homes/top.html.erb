@@ -19,7 +19,7 @@
     <div class="col-4 mb-5 mt-3">
       <div class="box">
         <%= link_to song_path(song) do %>
-          <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg', class: "border img_index" %>
+          <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg', fallback: "no_image.jpg", size: "300x300", class: "border img_index" %>
         <% end %>
         <div class="btn_play" id="btn_<%= song.id %>"></div>
       </div>
@@ -46,7 +46,7 @@
     <div class="col-4 mb-5 mt-3">
       <div class="box">
         <%= link_to song_path(song) do %>
-          <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg', class: "border img_index" %>
+          <%= attachment_image_tag song, :image, :fill,300,300, format: 'jpeg', fallback: "no_image.jpg", size: "300x300", class: "border img_index" %>
         <% end %>
         <div class="btn_play" id="btn_<%= song.id %>"></div>
       </div>

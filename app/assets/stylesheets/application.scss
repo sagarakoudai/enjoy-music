@@ -52,7 +52,7 @@ body {
   left: 47%;
   transform: translateY(-50%) translateX(-50%);
   margin: auto;
-  background-image: url("playbutton.png");
+  background-image:  image-url("playbutton.png");
   background-size: 100% 100%;
   height: 50%;
   width: 50%;
@@ -65,7 +65,7 @@ body {
   left: 47%;
   transform: translateY(-50%) translateX(-50%);
   margin: auto;
-  background-image: url("stopbutton.jpeg");
+  background-image: image-url("stopbutton.jpeg");
   background-size: 100% 100%;
   height: 40%;
   width: 40%;
@@ -87,7 +87,7 @@ body {
   }
 
 .no_img {
-  
+
 }
 
 

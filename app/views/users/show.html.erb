@@ -1,10 +1,6 @@
 <h1><%= @user.name %></h1>
 <div class="row mb-5">
-  <% if @user.image_id == nil %>
-    <%= image_tag 'no_image.jpg', size: '300x300', class: "border rounded-circle" %>
-  <% else %>
-    <%= attachment_image_tag @user, :image, :fill,300,300, format: 'jpeg', class: "border rounded-circle" %>
-  <% end %>
+  <%= attachment_image_tag @user, :image, :fill,300,300, format: 'jpeg', fallback: "no_image.jpg", size: "300x300", class: "border rounded-circle" %>
 
   <table class="table col-8">
     <tr><td class="lead">

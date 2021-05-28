@@ -17,5 +17,8 @@ $(function () {
 	audio.onpause = function() {
 		isPlaying = false;
 	};
+	audio.onended = function() {
+		isPlaying = true;
+	};
 });
 </script>

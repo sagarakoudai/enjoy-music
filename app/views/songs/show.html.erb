@@ -1,17 +1,13 @@
 <div class="col-10 mx-auto">
 
   <h1><%= @song.title %></h1>
-  <%= attachment_image_tag @song, :image, :fill,800,500, format: 'jpeg', class: "border img_show" %><br>
+  <%= attachment_image_tag @song, :image, :fill,800,500, format: 'jpeg', fallback: "no_image.jpg", size: "800x500", class: "border img_show" %><br>
   <audio src="<%= url_for(@song.file.url) %>", class="play_bar", controls></audio>
 
   <div class="row mb-5">
     <div class="col-5">
       <%= link_to user_path(@song.user) do %>
-        <% if @song.user.image_id == nil %>
-           <%= image_tag 'no_image.jpg', size: '300x300', class: "border rounded-circle" %><br>
-        <% else %>
-           <%= attachment_image_tag @song.user, :image, :fill,100,100, format: 'jpeg', class: "border rounded-circle" %><br>
-        <% end %>
+        <%= attachment_image_tag @song.user, :image, :fill,100,100, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "border rounded-circle" %><br>
       <% end %>
       <%= link_to @song.user.name, user_path(@song.user) %><br>
 
