@@ -1,14 +1,14 @@
 class SongsController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :destroy, :new]
+  before_action :correct_user, only: [:edit, :update, :destroy,]
 
   def index
-    @songs = Song.search(params[:search]).order(updated_at: "DESC")
+    @songs = Song.search(params[:search]).order(updated_at: "DESC").page(params[:page]).reverse_order
     @song_styles = SongStyle.all
     if params[:sort_style]
-      @songs = Song.where(song_style_id: params[:sort_style])
+      @songs = Song.where(song_style_id: params[:sort_style]).page(params[:page]).reverse_order
     elsif params[:sort_popular]
-      @songs_popular = @songs.sort {|a,b| b.favorites.count <=> a.favorites.count}
-      @songs = @songs_popular
+      songs = @songs.sort {|a,b| b.favorites.count <=> a.favorites.count}
+      @songs = Kaminari.paginate_array(songs).page(params[:page])
     end
   end
 
@@ -18,7 +18,11 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = Song.new
+    if user_signed_in?
+      @song = Song.new
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
