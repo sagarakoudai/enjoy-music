@@ -1,6 +1,6 @@
 <h1 class="mb-5">フォロワー <%= @user.follower_user.count %>人</h1>
 
-<div class="row">sss
+<div class="row">
 <% @user.follower_user.each do |user| %>
   <div class="col-4">
     <%= link_to user_path(user) do %>
