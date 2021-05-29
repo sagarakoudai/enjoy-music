@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy, :new]
 
   def index
     @songs = Song.search(params[:search]).order(updated_at: "DESC")

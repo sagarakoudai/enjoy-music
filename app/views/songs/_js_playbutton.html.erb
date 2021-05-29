@@ -2,6 +2,7 @@
 $(function () {
 	var audio = $("#audio_<%= song.id %>").get(0);
 	var isPlaying = false;
+
 	$("#btn_<%= song.id %>").on("click", function () {
 		if (isPlaying) {
 			audio.pause();
@@ -11,6 +12,7 @@ $(function () {
 			$("#btn_<%= song.id %>").addClass("btn_stop");
 		}
 	});
+
 	audio.onplaying = function() {
 		isPlaying = true;
 	};
@@ -18,7 +20,7 @@ $(function () {
 		isPlaying = false;
 	};
 	audio.onended = function() {
-		isPlaying = true;
+		$("#btn_<%= song.id %>").removeClass("btn_stop");
 	};
 });
 </script>

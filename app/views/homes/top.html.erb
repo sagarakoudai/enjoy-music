@@ -1,6 +1,6 @@
 <h1 class="display-2 mx-auto text-center">ENJOY MUSIC!</h1>
 
-<p class="mb-5 text-center">ENJOY MUSIC!へようこそ！<br>
+<p class="mb-5 text-center q">ENJOY MUSIC!へようこそ！<br>
   会員登録していただくと楽曲の投稿やお気に入り登録、フォロー機能が使えるようになります。<br>
   <%= link_to "新規登録", new_user_registration_path, class: "col-4" %>
   <%= link_to "ログイン", new_user_session_path, class: "col-4" %>
@@ -15,7 +15,6 @@
 <div class="row mb-5 py-2">
   <% @songs.last(3).each do |song| %>
     <%= render "songs/js_playbutton", song: song %>
-
     <div class="col-4 mb-5 mt-3">
       <div class="box">
         <%= link_to song_path(song) do %>
