@@ -1,6 +1,6 @@
 <h1 class="display-2 mx-auto text-center">ENJOY MUSIC!</h1>
 
-<p class="mb-5 text-center q">ENJOY MUSIC!へようこそ！<br>
+<p class="mb-5 text-center mx-5">ENJOY MUSIC!へようこそ！<br>
   会員登録していただくと楽曲の投稿やお気に入り登録、フォロー機能が使えるようになります。<br>
   <%= link_to "新規登録", new_user_registration_path, class: "col-4" %>
   <%= link_to "ログイン", new_user_session_path, class: "col-4" %>
@@ -34,7 +34,7 @@
 
 <div class="row justify-content-between pt-5">
   <h1 class="col-6 top_contents">人気の曲</h1>
-  <h1 class="col-6 top_index"><%= link_to ">楽曲一覧へ", songs_path(sort_popular: 1) %></h1>
+  <h1 class="col-6 top_index"><%= link_to ">ランキングへ", songs_path(sort_popular: 1) %></h1>
 </div>
 
 <div class="row pt-2 mb-3">

@@ -18,9 +18,9 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
 
-// * {
-// font-family: 'Ubuntu', sans-serif;
-// }
+* {
+  font-family: 'Poppins', sans-serif;
+}
 
 a:link, a:visited, a:active {
   color: black;
@@ -144,12 +144,24 @@ body {
     margin-left: 15px;
   }
 
-  .q {
-    width: 400px;
-    margin: 0, auto;
-  }
-
   .body {
     padding: 15px;
+  }
+
+  .about_link {
+    width: 160px;
+  }
+
+  .relationships_index {
+    max-width: 50%;
+  }
+
+  .text_area {
+    max-width: 100%;
+  }
+
+
+  .top_info {
+    max-width: 50%;
   }
 }

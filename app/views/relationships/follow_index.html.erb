@@ -2,7 +2,7 @@
 
 <div class="row">
 <% @user.following_user.each do |user| %>
-  <div class="col-4">
+  <div class="col-4 relationships_index">
     <%= link_to user_path(user) do %>
       <%= attachment_image_tag user, :image, :fill,200,200, format: 'jpeg', fallback: "no_image.jpg", size: "200x200", class: "border rounded-circle" %>
     <% end %>
