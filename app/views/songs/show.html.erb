@@ -6,13 +6,9 @@
 
   <div class="row mb-5">
     <div class="col-5">
-      <a href="/users/<%= @user.id %>">
-        <%= attachment_image_tag @user, :image, :fill,100,100, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "border rounded-circle" %><br>
-      </a>
-
-      <%#= link_to user_path(@song.user) do %>
-        <%#= attachment_image_tag @user, :image, :fill,100,100, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "border rounded-circle" %><br>
-      <%# end %>
+      <%= link_to user_path(@song.user) do %>
+        <%= attachment_image_tag @song.user, :image, :fill,100,100, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "border rounded-circle" %><br>
+      <% end %>
       <%= link_to @song.user.name, user_path(@song.user) %><br>
 
       <%= render 'relationships/form', user: @song.user %>
