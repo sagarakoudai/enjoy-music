@@ -50,9 +50,9 @@
         <div class="btn_play" id="btn_<%= song.id %>"></div>
       </div>
       <audio src="<%= url_for(song.file.url) %>",  id="audio_<%= song.id %>", pause="pause"></audio><br>
-      <span class="lead mr-3"><%= link_to song.title, song_path(song) %></span>
+      <span class="lead mr-3 word"><%= link_to song.title, song_path(song) %></span>
       <span class="small"><%= song.song_style.style %></span><br>
-      <%= link_to song.user.name, user_path(song.user) %>
+      <%= link_to song.user.name, user_path(song.user), class: "word" %>
       <span><%= render 'favorites/form', song: song %></span>
     </div>
   <% end %>

@@ -20,7 +20,6 @@
 
 * {
   font-family: 'Poppins', sans-serif;
-  word-break: break-all;
 }
 
 a:link, a:visited, a:active {
@@ -99,6 +98,10 @@ body {
 .top_index {
   text-align: right
   }
+
+.word {
+  word-break: break-all;
+}
 
 
 @media screen and (max-width:992px) {

@@ -13,9 +13,9 @@
         <div class="btn_play" id="btn_<%= favorite.song.id %>"></div>
       </div>
       <audio src="<%= url_for(favorite.song.file.url) %>",  id="audio_<%= favorite.song.id %>", pause="pause"></audio><br>
-      <span class="lead mr-3"><%= link_to favorite.song.title, song_path(favorite.song) %></span>
+      <span class="lead mr-3 word"><%= link_to favorite.song.title, song_path(favorite.song) %></span>
       <span class="small"><%= favorite.song.song_style.style %></span><br>
-      <%= link_to favorite.song.user.name, user_path(favorite.song.user) %>
+      <%= link_to favorite.song.user.name, user_path(favorite.song.user), class: "word" %>
       <span><%= render 'favorites/form', song: favorite.song %></span>
     </div>
   <% end %>
