@@ -20,5 +20,7 @@
       <span><%= render 'favorites/form', song: song %></span>
     </div>
   <% end %>
- <%= paginate @songs %>
+  <% unless params[:sort_popular] %>
+    <%= paginate @songs %>
+  <% end %>
 </div>
