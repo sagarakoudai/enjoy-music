@@ -10,8 +10,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to user_path
+    if  @user.update(user_params)
+      redirect_to user_path
+    else
+      flash[:notice] = "入力エラーが発生したため、入力ページにリダイレクトされました。"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 

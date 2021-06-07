@@ -33,19 +33,27 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     @song.user_id = current_user.id
-    if @song.image_id == nil
+    if  @song.image_id == nil
        @song.image_id = current_user.image_id
     end
-    @song.save
-    redirect_to songs_path
+    if @song.save
+      redirect_to songs_path
+    else
+      flash[:notice] = "入力エラーが発生したため、入力ページにリダイレクトされました。"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update
     if @song.image_id == nil
       @song.image_id = current_user.image_id
     end
-    @song.update(song_params)
-    redirect_to songs_path
+    if @song.update(song_params)
+      redirect_to songs_path
+    else
+      flash[:notice] = "入力エラーが発生したため、入力ページにリダイレクトされました。"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy
