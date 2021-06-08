@@ -2,9 +2,11 @@
 
 <p class="mb-5 text-center mx-5">ENJOY MUSIC!へようこそ！<br>
   会員登録していただくと楽曲の投稿やお気に入り登録、フォロー機能が使えるようになります。<br>
-  <%= link_to "新規登録", new_user_registration_path, class: "col-4" %>
-  <%= link_to "ログイン", new_user_session_path, class: "col-4" %>
-  <%= link_to "ENJOY MUSIC!とは？", home_about_path, class: "col-4" %>
+  <% unless user_signed_in? %>
+    <%= link_to ">︎新規登録", new_user_registration_path, class: "col-4" %>
+    <%= link_to ">ログイン", new_user_session_path, class: "col-4" %>
+  <% end %>
+  <%= link_to ">ENJOY MUSIC!とは？", home_about_path, class: "col-4" %>
 </p>
 
 <div class="row justify-content-between pt-5">

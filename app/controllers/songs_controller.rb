@@ -2,12 +2,11 @@ class SongsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy,]
 
   def index
-    @songs = Song.all
     @song_styles = SongStyle.all
     if params[:sort_style]
       @songs = Song.where(song_style_id: params[:sort_style]).page(params[:page]).reverse_order
     elsif params[:sort_popular]
-      @songs = @songs.sort {|a,b| b.favorites.count <=> a.favorites.count}
+      @songs = Song.all.sort {|a,b| b.favorites.count <=> a.favorites.count}.first(12)
     else
       @songs = Song.search(params[:search]).page(params[:page]).reverse_order
     end

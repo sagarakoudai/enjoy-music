@@ -36,7 +36,7 @@ body {
 }
 
 .body {
-  opacity: 0.97;
+  opacity: 0.95;
   min-height: 1000px;
   padding: 3rem;
   // background: linear-gradient(to bottom right, #b968c5, skyblue);
@@ -46,9 +46,9 @@ body {
   word-break: break-all;
 }
 
-  .menu li, .menu_style li {
-    margin-left: 60px;
-  }
+.menu li, .menu_style li {
+  margin-left: 60px;
+}
 
 .play_bar {
   width: 90%;
