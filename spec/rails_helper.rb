@@ -20,6 +20,8 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
+
+# spec/support/配下のファイルを読み込むことができるようになる
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
@@ -61,4 +63,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+# user = FactoryBot.create(:user) → FactoryBotの部分を省略できる
+  # config.include FactoryBot::Syntax::Methods
 end
