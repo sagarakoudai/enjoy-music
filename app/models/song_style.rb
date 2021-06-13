@@ -4,5 +4,4 @@ class SongStyle < ApplicationRecord
   def select_song_style
     [style].join
   end
-
 end

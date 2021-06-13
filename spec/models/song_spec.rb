@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Song, type: :model do
-
   before do
     @user = FactoryBot.create(:user)
     @style = SongStyle.create(style: "DTM")
@@ -16,11 +15,10 @@ RSpec.describe Song, type: :model do
     #     file: Rack::Test::UploadedFile.new(file_path),
     #     )
     #     expect(song.valid?).to eq true
-        expect(FactoryBot.build(:song)).to be_valid
+    expect(FactoryBot.build(:song)).to be_valid
   end
 
   it "タイトルがなければ無効な状態であること" do
-     expect(FactoryBot.build(:song, title: "")).to_not be_valid
+    expect(FactoryBot.build(:song, title: "")).not_to be_valid
   end
-
 end

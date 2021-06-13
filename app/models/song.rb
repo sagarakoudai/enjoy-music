@@ -4,8 +4,8 @@ class Song < ApplicationRecord
 
   belongs_to :user
   belongs_to :song_style
-  has_many :favorites,dependent: :destroy
-  has_many :comments,dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true
   validates :file, presence: true
@@ -21,5 +21,4 @@ class Song < ApplicationRecord
       Song.all
     end
   end
-
 end

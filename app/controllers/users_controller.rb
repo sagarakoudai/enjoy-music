@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if  @user.update(user_params)
+    if @user.update(user_params)
       redirect_to user_path
     else
       flash[:notice] = "入力エラーが発生したため、入力ページにリダイレクトされました。"
@@ -18,9 +18,8 @@ class UsersController < ApplicationController
     end
   end
 
+  private
 
-
- private
   def user_params
     params.require(:user).permit(:name, :introduction, :image)
   end
@@ -32,8 +31,7 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
     else
-       redirect_to root_path
+      redirect_to root_path
     end
   end
-
 end

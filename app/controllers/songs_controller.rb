@@ -1,12 +1,12 @@
 class SongsController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :destroy,]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @song_styles = SongStyle.all
     if params[:sort_style]
       @songs = Song.where(song_style_id: params[:sort_style]).page(params[:page]).reverse_order
     elsif params[:sort_popular]
-      @songs = Song.all.sort {|a,b| b.favorites.count <=> a.favorites.count}.first(12)
+      @songs = Song.all.sort { |a, b| b.favorites.count <=> a.favorites.count }.first(12)
     else
       @songs = Song.search(params[:search]).page(params[:page]).reverse_order
     end
@@ -32,8 +32,8 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
     @song.user_id = current_user.id
-    if  @song.image_id == nil
-       @song.image_id = current_user.image_id
+    if @song.image_id.nil?
+      @song.image_id = current_user.image_id
     end
     if @song.save
       redirect_to songs_path
@@ -44,7 +44,7 @@ class SongsController < ApplicationController
   end
 
   def update
-    if @song.image_id == nil
+    if @song.image_id.nil?
       @song.image_id = current_user.image_id
     end
     if @song.update(song_params)
@@ -60,8 +60,8 @@ class SongsController < ApplicationController
     redirect_to songs_path
   end
 
+  private
 
- private
   def select_song_style
     params.require(:song_style).permit(:select_song_style)
   end
@@ -78,8 +78,7 @@ class SongsController < ApplicationController
         redirect_to root_path
       end
     else
-       redirect_to root_path
+      redirect_to root_path
     end
   end
-
 end

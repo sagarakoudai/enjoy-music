@@ -16,5 +16,4 @@ class RelationshipsController < ApplicationController
   def follower_index
     @user = User.find(params[:user_id])
   end
-
 end

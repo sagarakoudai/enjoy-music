@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     @song = Song.find(params[:song_id])
     @comment = current_user.comments.new(comment_params)
@@ -13,12 +12,9 @@ class CommentsController < ApplicationController
     @comment.destroy
   end
 
-
-
- private
+  private
 
   def comment_params
     params.require(:comment).permit(:body)
   end
-
 end

@@ -46,7 +46,7 @@ class AudioFileUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-# mp3に変換
+  # mp3に変換
   # version :mp3 do
   #   process :convert => [{output_format: :mp3}]
 
@@ -54,5 +54,4 @@ class AudioFileUploader < CarrierWave::Uploader::Base
   #     "#{super.chomp(File.extname(super))}.mp3"
   #   end
   # end
-
 end
